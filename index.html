@@ -1,0 +1,163 @@
+<html>
+    <head>
+        <title>
+            Analogue Clock
+        </title>
+        <style>
+            body {
+                background: skyblue;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            #clock {
+                border-radius: 50%;
+                height: 300px;
+                width: 300px;
+                /*background: black;*/
+                background-image: url("https://lh3.googleusercontent.com/proxy/aSdq5RydjmW8zVKCqhDKq7GdgfDSzGENd654UlPoKkMhVpdd25EcJxcqYicUoj7Yzg8pa0Ffq0Bj8umVmd002VHDPc4PnM4");
+                background-size: 300px 300px;
+                border: 5px solid white;
+            }
+            /*.twelwe {
+                position: absolute;
+                top: 26%;
+                left: 48.5%;
+            }
+            .one {
+                position: absolute;
+                top: 31%;
+                left: 54%;
+            }
+            .two {
+                position: absolute;
+                top: 36%;
+                left: 58%;
+            }
+            .three {
+                position: absolute;
+                top: 45%;
+                left: 60%;
+            }
+            .four {
+                position: absolute;
+                left: 58%;
+                top: 54%;
+            }
+            .five {
+                position: absolute;
+                left: 54%;
+                top: 62%;
+            }
+            .six {
+                position: absolute;
+                left: 49%;
+                top: 66%;
+            }
+            .seven {
+                position: absolute;
+                top: 62%;
+                left: 44%;
+            }
+            .eight {
+                position: absolute;
+                top: 54%;
+                left: 40%;
+            }
+            .nine {
+                position: absolute;
+                top: 45%;
+                left: 39%;
+            }
+            .ten {
+                position: absolute;
+                top: 36%;
+                left: 40%;
+            }
+            .eleven {
+                position: absolute;
+                top: 29%;
+                left: 44%;
+            }*/
+            #numbers {
+                color: white;
+                font-family: sans-serif;
+                font-size: 35px;
+            }
+            #numbers::after {
+                content:'';
+                background: black;
+                height: 30px;
+                width: 30px;
+                border-radius: 50%;
+                position: absolute;
+                transform: translate(-50%, -50%);
+                top: 50%;
+                left: 50%;
+            }
+            .hands {
+                position: absolute;
+                background-color: black;
+                left: 50%;
+                bottom: 50%;
+                transform: translate(-50%);
+                transform-origin: bottom;
+            }
+            .hours {
+                height: 10%;
+                width: 8px;
+            }
+            .minutes {
+                width: 4px;
+                height: 14%;
+            }
+            .seconds {
+                width: 2px;
+                height: 17%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="clock">
+            <div id="numbers">
+            <!--<div class="one">1</div>
+            <div class="two">2</div>
+            <div class="three">3</div>
+            <div class="four">4</div>
+            <div class="five">5</div>
+            <div class="six">6</div>
+            <div class="seven">7</div>
+            <div class="eight">8</div>
+            <div class="nine">9</div>
+            <div class="ten">10</div>
+            <div class="eleven">11</div>
+            <div class="twelwe">12</div>-->
+        </div>
+            <div class="hands hours"></div>
+            <div class="hands minutes"></div>
+            <div class="hands seconds"></div>
+    </div>
+    </body>
+    <script>
+        var hourhand = document.querySelector(".hours");
+        var minihand = document.querySelector(".minutes");
+        var secohand = document.querySelector(".seconds");
+
+        function rotatemyclock() {
+            var currentDate = new Date();
+            var hours = currentDate.getHours();
+            var minutes = currentDate.getMinutes();
+            var seconds = currentDate.getSeconds();
+            var secondsFraction = seconds/60;
+            var minutesFraction = (secondsFraction+minutes)/60;
+            var hoursFraction = (minutesFraction+hours)/12;
+            var secondsAngle = secondsFraction*360;
+            var minutesAngle = minutesFraction*360;
+            var hoursAngle = hoursFraction*360;
+            secohand.style.transform = `rotate(${secondsAngle}deg)`;
+            minihand.style.transform = `rotate(${minutesAngle}deg)`;
+            hourhand.style.transform = `rotate(${hoursAngle}deg)`;
+        }
+        setInterval(rotatemyclock, 500)
+    </script>
+</html>
